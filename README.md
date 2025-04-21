@@ -20,32 +20,16 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 result.
 
-You can start editing the page by modifying `app/page.tsx`. The page
-auto-updates as you edit the file.
+## Choices & Thoughts
 
-This project uses
-[`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)
-to automatically optimize and load [Geist](https://vercel.com/font), a new font
-family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js
-  features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out
-[the Next.js GitHub repository](https://github.com/vercel/next.js) - your
-feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the
-[Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
-from the creators of Next.js.
-
-Check out our
-[Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying)
-for more details.
+- Multi step form with each step in its own route. React context used to manage
+  data throughout routes.
+- React hook form with zod used to handle form and validation.
+- Would have wnated to setup (MSW)[https://mswjs.io/docs] (mock service worker)
+  to mock API calls and save the data to local storage in the reqeust resolvers.
+  But didn't get to it because of the apparent
+  (issues)[https://github.com/mswjs/examples/pull/101] between MSW and Next App
+  router that I didn't have the time to look into.
+- Would have used react router to handle to data requests, caching and loading /
+  error states.
+  - Fetch form data in layout.tsx and post onSubmit in '/details' route
