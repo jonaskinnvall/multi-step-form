@@ -27,7 +27,7 @@ type SchemaType = z.infer<typeof LastStepSchema>
 export default function Home() {
 	const router = useRouter()
 
-	const [formData, setFormData] = useFormContext()
+	const [formData] = useFormContext()
 
 	const form = useForm<SchemaType>({
 		resolver: zodResolver(LastStepSchema),
@@ -35,13 +35,16 @@ export default function Home() {
 	})
 
 	function onSubmit(data: SchemaType) {
-		setFormData({
-			...formData,
-			name: data.name,
-			email: data.email,
-			phone: data.phone,
-			postal_code: data.postal_code,
-		})
+		window.localStorage.setItem(
+			'form-data',
+			JSON.stringify({
+				...formData,
+				name: data.name,
+				email: data.email,
+				phone: data.phone,
+				postal_code: data.postal_code,
+			}),
+		)
 		router.push('/success')
 	}
 

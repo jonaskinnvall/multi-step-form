@@ -20,16 +20,22 @@ FormContext.displayName = 'FormContext'
 
 type FormContextProviderProps = { children: React.ReactNode }
 function FormContextProvider({ children }: FormContextProviderProps) {
-	const [formData, setFormData] = useState<FormValuesType>({
-		monthly_bill: '',
-		roof_size: '',
-		est_savings: '',
-		est_co2_reduction: '',
-		name: '',
-		email: '',
-		phone: '',
-		postal_code: '',
-	})
+	const initalFormData: string | null = window.localStorage.getItem('form-data')
+
+	const [formData, setFormData] = useState<FormValuesType>(
+		initalFormData !== null
+			? JSON.parse(initalFormData)
+			: {
+					monthly_bill: '',
+					roof_size: '',
+					est_savings: '',
+					est_co2_reduction: '',
+					name: '',
+					email: '',
+					phone: '',
+					postal_code: '',
+			  },
+	)
 
 	const value = useMemo<
 		[FormValuesType, React.Dispatch<React.SetStateAction<FormValuesType>>]
