@@ -3,13 +3,13 @@ import { createContext, useContext, useMemo, useState } from 'react'
 
 type FormValuesType = {
 	monthly_bill: number | ''
-	roof_size: string
+	roof_size: 'small' | 'medium' | 'large' | ''
 	est_savings: number | ''
 	est_co2_reduction: number | ''
 	name: string
 	email: string
-	phone: number | ''
-	postal_code: number | ''
+	phone: string
+	postal_code: string
 }
 
 const FormContext = createContext<
